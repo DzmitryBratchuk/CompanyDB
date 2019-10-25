@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using CompanyDB.Models;
 
 namespace CompanyDB.Controllers
@@ -22,6 +23,16 @@ namespace CompanyDB.Controllers
 
         public IActionResult Index()
         {
+            var result = from e in _db.Employees
+                      join ep in _db.EmployeesProjects on e.Id equals ep.EmployeeId
+                      join p in _db.Projects on ep.ProjectId equals p.Id
+                      select new { Name = e.FirstName, Surname = e.LastName, Project = p.ProjectName };
+
+
+            foreach (var item in result)
+            {
+
+            }
             return View();
         }
 
