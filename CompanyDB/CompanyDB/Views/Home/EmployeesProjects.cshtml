@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "EmployeesProjects";
+}
+
+
+<body>
+    <div>
+        <h3>Company employees-projects</h3>
+        <table border="1" width="100%">
+            <tr style="background-color:#FFE4E4">
+                <td><p>Id</p></td>
+                <td><p>First name</p></td>
+                <td><p>Last name</p></td>
+                <td><p>Project</p></td>
+            </tr>
+            @{
+                int i = 0;
+                foreach (var ep in Model)
+                {
+                    i++;
+                    <tr>
+                        <td><p>@i</p></td>
+                        <td><p>@ep.Name</p></td>
+                        <td><p>@ep.Surname</p></td>
+                        <td><p>@ep.Project</p></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>

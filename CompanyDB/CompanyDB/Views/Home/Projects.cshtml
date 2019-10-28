@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<body>
+    <div>
+        <h3>Company projects</h3>
+        <table border="1" width="100%">
+            <tr style="background-color:#FFE4E4">
+                <td><p>Id</p></td>
+                <td><p>Project Title</p></td>
+            </tr>
+            @{
+                int i = 0;
+                foreach (var p in Model)
+                {
+                    i++;
+                    <tr>
+                        <td><p>@i</p></td>
+                        <td><p>@p.ProjectTitle</p></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>
