@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using CompanyDB.Models;
+using CompanyDB.Utils;
 
 namespace CompanyDB.Controllers
 {
@@ -26,19 +27,26 @@ namespace CompanyDB.Controllers
             var result = from e in _db.Employees
                       join ep in _db.EmployeesProjects on e.Id equals ep.EmployeeId
                       join p in _db.Projects on ep.ProjectId equals p.Id
-                      select new { Name = e.FirstName, Surname = e.LastName, Project = p.ProjectName };
+                      select new { Name = e.FirstName, Surname = e.LastName, Project = p.ProjectName }.ToExpando();
 
-
-            foreach (var item in result)
-            {
-
-            }
-            return View();
+            return View(result.ToList());
         }
 
-        public IActionResult Privacy()
+        public IActionResult EmployeesProjects()
         {
-            return View();
+            var result = from e in _db.Employees
+                         join ep in _db.EmployeesProjects on e.Id equals ep.EmployeeId
+                         join p in _db.Projects on ep.ProjectId equals p.Id
+                         select new { Name = e.FirstName, Surname = e.LastName, Project = p.ProjectName }.ToExpando();
+
+            return View(result.ToList());
+        }
+
+        public IActionResult Projects()
+        {
+            var result = _db.Projects.Select(p => new { ProjectTitle = p.ProjectName }.ToExpando());
+
+            return View(result.ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
