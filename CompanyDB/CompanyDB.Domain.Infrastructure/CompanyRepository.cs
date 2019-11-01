@@ -8,44 +8,45 @@ using System.Text;
 
 namespace CompanyDB.Infrastructure.Data
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class CompanyRepository<TEntity> : IRepository<TEntity>
+        where TEntity : class
     {
-        private EmployeeContext _db;
+        private CompanydbContext _db;
 
-        public EmployeeRepository()
+        public CompanyRepository(CompanydbContext db)
         {
-            _db = new EmployeeContext();
+            _db = db;
         }
 
-        public void Create(Employee employee, bool shouldSaveChanges = true)
+        public void Create(TEntity entity, bool shouldSaveChanges = true)
         {
-            _db.Employees.Add(employee);
+            _db.Set<TEntity>().Add(entity);
             if (shouldSaveChanges)
                 this.SaveChanges();
         }
 
         public void Delete(object id, bool shouldSaveChanges = true)
         {
-            Employee employee = _db.Employees.Find(id);
-            if (employee != null)
-                _db.Employees.Remove(employee);
+            TEntity entity = _db.Set<TEntity>().Find(id);
+            if (entity != null)
+                _db.Set<TEntity>().Remove(entity);
             if (shouldSaveChanges)
                 this.SaveChanges();
         }
 
-        public IQueryable<Employee> GetAllEmployees()
+        public IQueryable<TEntity> GetAll()
         {
-            return _db.Employees.AsQueryable();
+            return _db.Set<TEntity>().AsNoTracking();
         }
 
-        public Employee GetEmployee(object id)
+        public TEntity GetById(object id)
         {
-            return _db.Employees.Find(id);
+            return _db.Set<TEntity>().Find(id);
         }
 
-        public void Update(Employee employee, bool shouldSaveChanges = true)
+        public void Update(TEntity entity, bool shouldSaveChanges = true)
         {
-            _db.Entry(employee).State = EntityState.Modified;
+            _db.Entry(entity).State = EntityState.Modified;
             if (shouldSaveChanges)
                 this.SaveChanges();
         }
