@@ -9,10 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using CompanyDB.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using CompanyDB.Domain.Interfaces;
+using CompanyDB.Infrastructure.Data;
 
 namespace CompanyDB
 {
@@ -37,6 +38,7 @@ namespace CompanyDB
                 }
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient(typeof(IRepository<>), typeof(CompanyRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
