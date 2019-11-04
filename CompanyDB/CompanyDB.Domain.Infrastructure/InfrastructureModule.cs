@@ -30,7 +30,7 @@ namespace CompanyDB.Infrastructure.Data
             {
                 if (!options.IsConfigured)
                 {
-                    options.UseSqlServer(config.GetConnectionString("CompanyDatabase"), b => b.MigrationsAssembly("CompanyDB"));
+                    options.UseSqlServer(config.GetConnectionString("CompanyDatabase"), b => b.MigrationsAssembly("CompanyDB.Infrastructure.Data"));
                 }
             });
             services.AddTransient(typeof(IRepository<>), typeof(CompanyRepository<>));
