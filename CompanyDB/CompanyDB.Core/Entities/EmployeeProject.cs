@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CompanyDB.Domain.Core
+namespace CompanyDB.Core.Entities
 {
     public partial class EmployeeProject
     {

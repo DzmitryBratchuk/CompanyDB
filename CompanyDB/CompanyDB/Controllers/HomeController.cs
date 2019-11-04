@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using CompanyDB.Domain.Core;
-using CompanyDB.Domain.Interfaces;
 using CompanyDB.Models;
 using CompanyDB.Utils;
+using CompanyDB.Core.Entities;
+using CompanyDB.Core.Interfaces.Data;
 
 namespace CompanyDB.Controllers
 {

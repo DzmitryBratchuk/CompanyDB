@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20191104125209_NewMigration.cs" />
-    <Compile Remove="Migrations\20191104125209_NewMigration.Designer.cs" />
-    <Compile Remove="Migrations\20191104125744_InitialMigration.cs" />
-    <Compile Remove="Migrations\20191104125744_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20191104125843_InitialMigration.cs" />
-    <Compile Remove="Migrations\20191104125843_InitialMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191104125209_NewMigration.cs" />
+    <Compile Remove="Data\Migrations\20191104125209_NewMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191104125744_InitialMigration.cs" />
+    <Compile Remove="Data\Migrations\20191104125744_InitialMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191104125843_InitialMigration.cs" />
+    <Compile Remove="Data\Migrations\20191104125843_InitialMigration.Designer.cs" />
   </ItemGroup>
   
   <ItemGroup>
@@ -24,10 +24,13 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\CompanyDB.Domain.Core\CompanyDB.Domain.Core.csproj" />
-    <ProjectReference Include="..\CompanyDB.Domain.Interfaces\CompanyDB.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\CompanyDB.Core\CompanyDB.Core.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

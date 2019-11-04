@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CompanyDB.Domain.Interfaces
+namespace CompanyDB.Core.Interfaces.SharedKernel
 {
     public interface IModule
     {

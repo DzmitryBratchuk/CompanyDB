@@ -1,12 +1,11 @@
-﻿using CompanyDB.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Extensions.Configuration;
+using CompanyDB.Infrastructure.Data;
+using CompanyDB.Core.Interfaces.SharedKernel;
+using CompanyDB.Core.Interfaces.Data;
 
-namespace CompanyDB.Infrastructure.Data
+namespace CompanyDB.Infrastructure
 {
     public class InfrastructureModule : IModule
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CompanyDB.Domain.Interfaces
+namespace CompanyDB.Core.Interfaces.Data
 {
     public interface IRepository<TEntity> : IDisposable
         where TEntity : class

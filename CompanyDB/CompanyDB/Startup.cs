@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
-using CompanyDB.Domain.Core.DependencyInjection;
-using CompanyDB.Infrastructure.Data;
+using CompanyDB.Core.DependencyInjection;
+using CompanyDB.Infrastructure;
 
 namespace CompanyDB
 {

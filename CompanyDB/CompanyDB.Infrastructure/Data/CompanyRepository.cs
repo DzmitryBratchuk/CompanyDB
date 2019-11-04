@@ -1,5 +1,4 @@
-﻿using CompanyDB.Domain.Core;
-using CompanyDB.Domain.Interfaces;
+﻿using CompanyDB.Core.Interfaces.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

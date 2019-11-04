@@ -1,10 +1,10 @@
-﻿using CompanyDB.Domain.Interfaces;
+﻿using CompanyDB.Core.Interfaces.SharedKernel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CompanyDB.Domain.Core.DependencyInjection
+namespace CompanyDB.Core.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
