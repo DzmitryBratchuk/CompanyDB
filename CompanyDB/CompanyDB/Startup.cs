@@ -1,18 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using CompanyDB.Domain.Interfaces;
+using CompanyDB.Domain.Core.DependencyInjection;
 using CompanyDB.Infrastructure.Data;
 
 namespace CompanyDB
@@ -30,15 +22,8 @@ namespace CompanyDB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<CompanydbContext>(options =>
-            {
-                if (!options.IsConfigured)
-                {
-                    options.UseSqlServer(Configuration.GetConnectionString("CompanyDatabase"));
-                }
-            });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient(typeof(IRepository<>), typeof(CompanyRepository<>));
+            services.AddModule<InfrastructureModule>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
