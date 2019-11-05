@@ -10,54 +10,42 @@ using CompanyDB.Utils;
 using CompanyDB.Core.Entities;
 using CompanyDB.Core.Interfaces.Data;
 using CompanyDB.Core.Models;
+using CompanyDB.Core.Interfaces.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CompanyDB.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IRepository<Employee> _repository;
 
-        public HomeController(ILogger<HomeController> logger, IRepository<Employee> repository)
+        public HomeController(ILogger<HomeController> logger)
         {
             
             _logger = logger;
-            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            var result = from e in _repository.GetAll()
-                     select new { Name = e.FirstName, Surname = e.LastName }.ToExpando();
-            //var result = from e in _db.Employees
-            //          join ep in _db.EmployeesProjects on e.Id equals ep.EmployeeId
-            //          join p in _db.Projects on ep.ProjectId equals p.Id
-            //          select new { Name = e.FirstName, Surname = e.LastName, Project = p.ProjectName }.ToExpando();
-            Task.Delay(5000);
-            return View(result.ToList());
+            return View();
         }
 
         public IActionResult EmployeesProjects()
         {
-           // var result = from e in _repository.GetAllEmployees()
-            //             select new { Name = e.FirstName, Surname = e.LastName, Project = e.EmployeesProjects.Count }.ToExpando();
+            IModelCreator<EmployeeProjectViewModel> creator = HttpContext.RequestServices.GetService<IModelCreator<EmployeeProjectViewModel>>();
 
-            //var result = from e in _db.Employees
-            //             join ep in _db.EmployeesProjects on e.Id equals ep.EmployeeId
-            //             join p in _db.Projects on ep.ProjectId equals p.Id
-            //             select new { Name = e.FirstName, Surname = e.LastName, Project = p.ProjectName }.ToExpando();
+            var result = creator.GetAll().ToList();
 
-            return View();
+            return View(result);
         }
 
         public IActionResult Projects()
         {
-           // var result = from e in _repository.GetAllEmployees()
-           //              select new { ProjectTitle = e.Education }.ToExpando();
+            IModelCreator<ProjectViewModel> creator = HttpContext.RequestServices.GetService<IModelCreator<ProjectViewModel>>();
 
-            //var result = _db.Projects.Select(p => new { ProjectTitle = p.ProjectName }.ToExpando());
+            var result = creator.GetAll().ToList();
 
-            return View();
+            return View(result);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
