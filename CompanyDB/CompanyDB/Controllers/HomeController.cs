@@ -30,20 +30,20 @@ namespace CompanyDB.Controllers
             return View();
         }
 
-        public IActionResult EmployeesProjects()
+        public async Task<IActionResult> EmployeesProjects()
         {
             IModelCreator<EmployeeProjectViewModel> creator = HttpContext.RequestServices.GetService<IModelCreator<EmployeeProjectViewModel>>();
 
-            var result = creator.GetAll().ToList();
+            var result = await creator.GetAllAsync();
 
             return View(result);
         }
 
-        public IActionResult Projects()
+        public async Task<IActionResult> Projects()
         {
             IModelCreator<ProjectViewModel> creator = HttpContext.RequestServices.GetService<IModelCreator<ProjectViewModel>>();
 
-            var result = creator.GetAll().ToList();
+            var result = await creator.GetAllAsync();
 
             return View(result);
         }

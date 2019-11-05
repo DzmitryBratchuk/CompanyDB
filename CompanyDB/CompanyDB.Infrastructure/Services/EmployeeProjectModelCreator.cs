@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CompanyDB.Infrastructure.Services
 {
@@ -37,6 +38,19 @@ namespace CompanyDB.Infrastructure.Services
                        Surname = e.LastName,
                        ProjectTitle = p.ProjectName
                    };
+        }
+
+        public Task<List<EmployeeProjectViewModel>> GetAllAsync()
+        {
+            return (from e in _employeeRepository.GetAll()
+                    join ep in _employeeProjectRepository.GetAll() on e.Id equals ep.EmployeeId
+                    join p in _projectRepository.GetAll() on ep.ProjectId equals p.Id
+                    select new EmployeeProjectViewModel
+                    {
+                        Name = e.FirstName,
+                        Surname = e.LastName,
+                        ProjectTitle = p.ProjectName
+                    }).ToListAsync();
         }
     }
 }
