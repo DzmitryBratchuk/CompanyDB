@@ -7,5 +7,6 @@ namespace CompanyDB.Core.Models
 {
     public class ProjectViewModel : IModel
     {
+        public string ProjectTitle { get; set; }
     }
 }
