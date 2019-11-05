@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using CompanyDB.Infrastructure.Data;
 using CompanyDB.Core.Interfaces.SharedKernel;
 using CompanyDB.Core.Interfaces.Data;
+using CompanyDB.Core.Interfaces.Services;
+using CompanyDB.Infrastructure.Services;
+using CompanyDB.Core.Models;
 
 namespace CompanyDB.Infrastructure
 {
@@ -33,6 +36,9 @@ namespace CompanyDB.Infrastructure
                 }
             });
             services.AddTransient(typeof(IRepository<>), typeof(CompanyRepository<>));
+            services.AddTransient(typeof(IModelCreator<>), typeof(ModelCreator<>));
+            services.AddTransient<IModelCreator<ProjectViewModel>, ProjectModelCreator>();
+            services.AddTransient<IModelCreator<EmployeeProjectViewModel>, EmployeeProjectModelCreator>();
         }
     }
 }
