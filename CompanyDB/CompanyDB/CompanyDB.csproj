@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CompanyDB.Infrastructure\CompanyDB.Infrastructure.csproj" />
   </ItemGroup>
 

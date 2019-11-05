@@ -1,6 +1,6 @@
 using System;
 
-namespace CompanyDB.Models
+namespace CompanyDB.Core.Models
 {
     public class ErrorViewModel
     {
