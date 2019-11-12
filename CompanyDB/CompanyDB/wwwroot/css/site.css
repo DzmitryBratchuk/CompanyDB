@@ -61,6 +61,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  padding: 0;
+  margin: 0;
 }
 .footer {
   position: absolute;
@@ -68,4 +70,58 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/* 404 Not Found page styles
+-------------------------------------------------- */
+#notfound {
+    position: relative;
+    height: 100vh;
+}
+#notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.notfound {
+    text-align: center;
+    line-height: 1.4;
+}
+.notfound .notfound-404>span {
+  display: block;
+  width: auto;
+  padding-top: 46%;
+  background-image: url('../images/notfound.png');
+  background-size: cover;
+  z-index: -1;
+}
+.notfound h2 {
+  font-family: 'Philosopher', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  color: #232323;
+}
+.notfound p {
+  font-family: 'Philosopher', sans-serif;
+  color: #787878;
+  font-weight: 400;
+}
+.notfound a {
+  font-family: 'Philosopher', sans-serif;
+  display: inline-block;
+  padding: 12px 30px;
+  font-weight: 700;
+  background-color: #ac2439;
+  color: #fff;
+  border-radius: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.notfound a:hover {
+  opacity: 0.8;
 }

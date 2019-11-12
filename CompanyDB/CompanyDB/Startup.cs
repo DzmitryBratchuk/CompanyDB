@@ -29,6 +29,7 @@ namespace CompanyDB
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //env.EnvironmentName = "Production";
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -41,6 +42,8 @@ namespace CompanyDB
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseStatusCodePagesWithReExecute("/Home/Error", "?code={0}"); // Handle http errors
 
             app.UseRouting();
 
