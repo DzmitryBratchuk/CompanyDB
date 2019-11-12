@@ -21,7 +21,7 @@ namespace CompanyDB.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            
+
             _logger = logger;
         }
 
@@ -30,19 +30,15 @@ namespace CompanyDB.Controllers
             return View();
         }
 
-        public async Task<IActionResult> EmployeesProjects()
+        public async Task<IActionResult> EmployeesProjects([FromServices] IModelCreator<EmployeeProjectViewModel> creator)
         {
-            IModelCreator<EmployeeProjectViewModel> creator = HttpContext.RequestServices.GetService<IModelCreator<EmployeeProjectViewModel>>();
-
             var result = await creator.GetAllAsync();
 
             return View(result);
         }
 
-        public async Task<IActionResult> Projects()
+        public async Task<IActionResult> Projects([FromServices] IModelCreator<ProjectViewModel> creator)
         {
-            IModelCreator<ProjectViewModel> creator = HttpContext.RequestServices.GetService<IModelCreator<ProjectViewModel>>();
-
             var result = await creator.GetAllAsync();
 
             return View(result);
